@@ -140,6 +140,12 @@ open class WSTagsField: UIScrollView {
             updatePlaceholderTextVisibility()
         }
     }
+    
+    open var placeholderAlignement: NSTextAlignment? {
+        didSet {
+            updatePlaceholderTextVisibility()
+        }
+    }
 
     open var placeholderAlwaysVisible: Bool = false {
         didSet {
@@ -767,6 +773,13 @@ extension WSTagsField {
         if let placeholderFont = placeholderFont {
             attributes = [NSAttributedString.Key.font: placeholderFont]
         }
+        
+        if let placeholderAlignement = placeholderAlignement {
+            let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = placeholderAlignement
+            attributes = [NSAttributedString.Key.paragraphStyle: paragraphStyle]
+        }
+        
         return NSAttributedString(string: placeholder, attributes: attributes)
     }
 
