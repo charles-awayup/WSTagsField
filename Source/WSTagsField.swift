@@ -766,18 +766,19 @@ extension WSTagsField {
     }
 
     private func attributedPlaceholder() -> NSAttributedString {
-        var attributes: [NSAttributedString.Key: Any]?
+        var attributes =  [NSAttributedString.Key: Any]()
+        
         if let placeholderColor = placeholderColor {
-            attributes = [NSAttributedString.Key.foregroundColor: placeholderColor]
+            attributes.updateValue(placeholderColor, forKey: .foregroundColor)
         }
         if let placeholderFont = placeholderFont {
-            attributes = [NSAttributedString.Key.font: placeholderFont]
+            attributes.updateValue(placeholderFont, forKey: .font)
         }
         
         if let placeholderAlignement = placeholderAlignement {
             let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = placeholderAlignement
-            attributes = [NSAttributedString.Key.paragraphStyle: paragraphStyle]
+            attributes.updateValue(paragraphStyle, forKey: .paragraphStyle)
         }
         
         return NSAttributedString(string: placeholder, attributes: attributes)

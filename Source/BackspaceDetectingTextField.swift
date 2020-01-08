@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 protocol BackspaceDetectingTextFieldDelegate: UITextFieldDelegate {
     /// Notify whenever the backspace key is pressed
@@ -19,6 +20,7 @@ class BackspaceDetectingTextField: UITextField {
 
     init() {
         super.init(frame: CGRect.zero)
+        self.keyboardDistanceFromTextField = 40;
     }
 
     required init?(coder aDecoder: NSCoder) {
