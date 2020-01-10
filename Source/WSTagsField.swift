@@ -801,6 +801,7 @@ extension WSTagsField: UITextFieldDelegate {
     }
 
     public func textFieldDidEndEditing(_ textField: UITextField) {
+        self.acceptCurrentTextAsTag()
         textDelegate?.textFieldDidEndEditing?(textField)
     }
 
